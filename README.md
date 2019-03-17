@@ -1,1 +1,1 @@
-C++
+C++ periodical learning
