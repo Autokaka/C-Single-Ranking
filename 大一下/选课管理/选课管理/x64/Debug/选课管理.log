@@ -1,0 +1,10 @@
+﻿  Database.cpp
+  test.cpp
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “e”: 未引用的局部变量
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “f”: 未引用的局部变量
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “c”: 未引用的局部变量
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “h”: 未引用的局部变量
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “g”: 未引用的局部变量
+d:\la\c++\大一下\选课管理\选课管理\test.cpp(58): warning C4101: “d”: 未引用的局部变量
+  正在生成代码...
+  选课管理.vcxproj -> D:\LA\C++\大一下\选课管理\x64\Debug\选课管理.exe

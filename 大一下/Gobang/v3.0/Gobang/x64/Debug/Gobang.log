@@ -1,0 +1,6 @@
+﻿  Gobang.cpp
+d:\la\c++\大一下\gobang\v3.0\gobang\gobang.cpp(764): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  main.cpp
+  正在生成代码...
+d:\la\c++\大一下\gobang\v3.0\gobang\gobang.cpp(951): warning C4715: “Gobang::ComboCheck”: 不是所有的控件路径都返回值
+  Gobang.vcxproj -> D:\LA\C++\大一下\Gobang\v3.0\x64\Debug\Gobang.exe

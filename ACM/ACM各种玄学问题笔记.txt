@@ -1,0 +1,9 @@
+1.goto语句可能导致WA；
+
+2.iostream, cstdio的double精度与stdio.h的不一样；
+
+3.有时候cincout和printfscanf相互转换一下就能AC；
+
+4.宏定义和函数相互转换可能可以解决TLE问题；
+
+5.map中，即使你的数据里面并不包含那个key， 你只要用了key访问map， map下对应key的value就会生成，导致map的size变大，最终导致死循环问题。所以对于本不存在的key值，访问完毕以后记得理科erase掉

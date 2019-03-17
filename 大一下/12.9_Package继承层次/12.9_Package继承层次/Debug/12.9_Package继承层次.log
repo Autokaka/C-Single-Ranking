@@ -1,0 +1,6 @@
+﻿  stdafx.cpp
+  main.cpp
+  Package.cpp
+d:\la\c++\大一下\12.9_package继承层次\12.9_package继承层次\package.cpp(16): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+  正在生成代码...
+  12.9_Package继承层次.vcxproj -> D:\LA\C++\大一下\12.9_Package继承层次\Debug\12.9_Package继承层次.exe

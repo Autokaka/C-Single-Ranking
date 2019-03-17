@@ -1,0 +1,20 @@
+﻿  DBoperate.cpp
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(238): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(278): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(283): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(288): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(322): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(360): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(448): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(453): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(610): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(615): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(755): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+d:\la\c++\大一下\选课系统数据库(流畅负责)\选课系统数据库\dboperate.cpp(760): warning C4267: “=”: 从“size_t”转换到“int”，可能丢失数据
+  test.cpp
+  正在生成代码
+  137 of 137 functions (100.0%) were compiled.
+    15 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+  选课系统数据库.vcxproj -> D:\LA\C++\大一下\选课系统数据库(流畅负责)\x64\Release\选课系统数据库.exe

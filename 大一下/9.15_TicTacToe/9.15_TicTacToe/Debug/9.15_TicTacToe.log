@@ -1,0 +1,3 @@
+﻿  TicTacToe.cpp
+e:\la\c++_20180321\大一下\9.15_tictactoe\9.15_tictactoe\tictactoe.cpp(30): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  9.15_TicTacToe.vcxproj -> E:\LA\C++_20180321\大一下\9.15_TicTacToe\Debug\9.15_TicTacToe.exe

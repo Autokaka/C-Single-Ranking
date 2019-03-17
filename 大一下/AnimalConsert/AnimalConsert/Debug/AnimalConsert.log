@@ -1,0 +1,3 @@
+﻿  main.cpp
+d:\la\c++\大一下\animalconsert\animalconsert\main.cpp(9): warning C4930: “Consert consert1(void)”: 未调用原型函数(是否是有意用变量定义的?)
+  AnimalConsert.vcxproj -> D:\LA\C++\大一下\AnimalConsert\Debug\AnimalConsert.exe

@@ -1,0 +1,3 @@
+﻿  Gobang.cpp
+d:\la\c++\大一下\gobang\gobang\gobang.cpp(587): warning C4715: “Gobang::ComboCheck”: 不是所有的控件路径都返回值
+  Gobang.vcxproj -> D:\LA\C++\大一下\Gobang\x64\Debug\Gobang.exe

@@ -1,0 +1,6 @@
+﻿  LibraryCard.cpp
+d:\la\c++\大一下\图书管理系统\librarycard\v3.0\librarycard\librarycard.cpp(203): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+d:\la\c++\大一下\图书管理系统\librarycard\v3.0\librarycard\librarycard.cpp(207): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+d:\la\c++\大一下\图书管理系统\librarycard\v3.0\librarycard\librarycard.cpp(231): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+d:\la\c++\大一下\图书管理系统\librarycard\v3.0\librarycard\librarycard.cpp(266): warning C4244: “初始化”: 从“std::streamoff”转换到“int”，可能丢失数据
+  LibraryCard.vcxproj -> D:\LA\C++\大一下\图书管理系统\LibraryCard\v3.0\x64\Debug\LibraryCard.exe
