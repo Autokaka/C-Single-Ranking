@@ -4,7 +4,7 @@ using namespace std;
 
 LaPointerList::LaPointerList()
 {
-	mylist = Makenull(mylist);
+	mylist = new celltype;
 }
 
 LaPointerList::LIST LaPointerList::Makenull(LIST &tgt)
@@ -13,6 +13,10 @@ LaPointerList::LIST LaPointerList::Makenull(LIST &tgt)
 	tgt->next = NULL;
 	return tgt;
 }
+LaPointerList::LIST LaPointerList::Makenull()
+{
+	Makenull(mylist);
+}
 
 void LaPointerList::Insert(int x, LIST tgt)
 {
@@ -20,6 +24,10 @@ void LaPointerList::Insert(int x, LIST tgt)
 	add->element = x;
 	add->next = tgt->next;
 	tgt->next = add;
+}
+void LaPointerList::Insert(int x)
+{
+	Insert(x, mylist);
 }
 
 void LaPointerList::Delete(LIST tgt)
@@ -34,6 +42,10 @@ LaPointerList::pos LaPointerList::End(LIST tgt)
 	LIST srch = tgt;
 	if (srch->next != NULL) srch = srch->next;
 	return srch;
+}
+LaPointerList::pos LaPointerList::End()
+{
+	End(mylist);
 }
 
 LaPointerList::pos LaPointerList::Locate(int x, LIST tgt)
@@ -53,8 +65,32 @@ LaPointerList::pos LaPointerList::Previous(pos p, LIST tgt)
 	{
 		pos srch = tgt;
 		while (srch->next != p) srch = srch->next;
-		return srch;
+		if (srch != End(tgt)) return srch;
+		else cout << "Sorry, position " << p << " is not in the list. Aborting...\n";
 	}
 	cout << "Sorry, position " << p << "has no former element. Aborting...\n";
 }
 
+LaPointerList::pos LaPointerList::Next(pos p, LIST tgt)
+{
+	if (p->next != NULL) return p->next;
+	cout << "Sorry, position " << p << "has no latter element. Aborting...\n";
+}
+
+LaPointerList::pos LaPointerList::First(LIST tgt)
+{
+	return tgt;
+}
+
+void LaPointerList::showContent(LIST tgt)
+{
+	pos srch = tgt->next;
+	bool said = false;
+	while (srch != NULL)
+	{
+		cout << srch->element << " ";
+		said = true;
+		srch = srch->next;
+	}
+	if (!said) cout << "(null)";
+}
