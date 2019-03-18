@@ -4,8 +4,11 @@ using namespace std;
 
 int main()
 {
-	LaPointerList la;
-	for (int i = 0; i < 10; i++) la.Insert(i, la.mylist);
-	la.Delete(la.Locate(5, la.mylist));
-	la.showContent(la.mylist);
+	LaPointerList list;
+	for (int i = 0; i < 10; i++)
+	{
+		list.Insert(i);
+	}
+	list.showContent();
+	return 0;
 }
