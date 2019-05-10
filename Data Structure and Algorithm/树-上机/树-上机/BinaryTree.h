@@ -17,13 +17,13 @@ private:
 public:
 	typedef celltype* treenode;
 	BinaryTree();
+	BinaryTree(eletype order[], int len);
 
 	treenode Empty();
 	bool isEmpty(treenode tgt);
-	bool isEmpty();
 
 	treenode createTreeNode(eletype val, treenode lchild, treenode rchild);
-	void addTreeNode(eletype val);
+	bool addTreeNode(treenode parent, eletype val);
 	treenode Root();
 	treenode leftChild(treenode parent);
 	treenode rightChild(treenode parent);

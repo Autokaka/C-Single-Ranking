@@ -4,16 +4,16 @@
 BinaryTree::BinaryTree() {
 	btree = Empty();
 }
+BinaryTree::BinaryTree(eletype order[], int len) {
+	btree = Empty();
+	for (int i = 0; i < len; i++) addTreeNode(Root(), order[i]);
+}
 
 BinaryTree::treenode BinaryTree::Empty() {
 	return NULL;
 }
 bool BinaryTree::isEmpty(treenode tgt) {
 	return (tgt == NULL);
-}
-bool BinaryTree::isEmpty()
-{
-	return (btree == NULL);
 }
 
 BinaryTree::treenode BinaryTree::createTreeNode(eletype val, treenode lchild, treenode rchild) {
@@ -23,13 +23,21 @@ BinaryTree::treenode BinaryTree::createTreeNode(eletype val, treenode lchild, tr
 	add->rchild = rchild;
 	return add;
 }
-void BinaryTree::addTreeNode(eletype val) {
-	treenode srch = btree;
-	while (!isEmpty(srch)) {
-		if (!isEmpty(srch->lchild) && isEmpty(srch->rchild)) srch = srch->lchild;
-		if (isEmpty(srch->lchild) && !isEmpty(srch->rchild)) srch = srch->rchild;
+bool BinaryTree::addTreeNode(treenode parent, eletype val) {
+	treenode srch = parent;
+	if (isEmpty(Root())) {
+		btree = createTreeNode(val, NULL, NULL);
+		return true;
 	}
-	srch = createTreeNode(val, NULL, NULL);
+	else if (isEmpty(srch->lchild)) {
+		srch->lchild = createTreeNode(val, NULL, NULL);
+		return true;
+	}
+	else if (isEmpty(srch->rchild)) {
+		srch->rchild = createTreeNode(val, NULL, NULL);
+		return true;
+	}
+	if (!addTreeNode(parent->lchild, val)) return addTreeNode(parent->rchild, val);
 }
 
 BinaryTree::treenode BinaryTree::Root() {
