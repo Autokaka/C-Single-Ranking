@@ -16,14 +16,16 @@ private:
 	node graph;
 
 public:
+	typedef int eletype;
 	Graph();
 
-	node newNode(eletype vertex);
-	void delNode(eletype vertex);
-	void setSucc(eletype vertex1, eletype vertex2);
-	void delSucc(eletype vertex1, eletype vertex2);
-	vector<eletype> succ(eletype vertex);
-	bool isEdge(eletype vertex1, eletype vertex2);
+	node newNode(eletype vertex_val);
+	void delNode(eletype vertex_val);
+	void setSucc(eletype vertex1_val, eletype vertex2_val);
+	void delSucc(eletype vertex1_val, eletype vertex2_val);
+	vector<eletype> succ(eletype vertex_val);
+	vector<eletype> pre(eletype vertex_val);
+	bool isEdge(eletype vertex1_val, eletype vertex2_val);
 };
 
 #endif
