@@ -10,7 +10,7 @@ Graph::Graph() {
 
 Graph::node Graph::newNode(eletype vertex_val) {
 	node add = new celltype;
-	add->data = vertex;
+	add->data = vertex_val;
 	add->down = NULL;
 	add->right = NULL;
 	return add;
