@@ -1,0 +1,6 @@
+﻿  WeightedGraph.cpp
+D:\LA\C++\Data Structure and Algorithm\图-上机\图-上机\WeightedGraph.cpp(334): warning C4305: “初始化”: 从“const int”到“WeightedGraph::eletype”截断
+D:\LA\C++\Data Structure and Algorithm\图-上机\图-上机\WeightedGraph.cpp(334): warning C4309: “初始化”: 截断常量值
+D:\LA\C++\Data Structure and Algorithm\图-上机\图-上机\WeightedGraph.cpp(334): warning C4101: “from”: 未引用的局部变量
+D:\LA\C++\Data Structure and Algorithm\图-上机\图-上机\WeightedGraph.cpp(334): warning C4101: “to”: 未引用的局部变量
+  图-上机.vcxproj -> D:\LA\C++\Data Structure and Algorithm\图-上机\x64\Debug\图-上机.exe

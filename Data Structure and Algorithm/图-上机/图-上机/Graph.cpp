@@ -1,4 +1,6 @@
 #include "Graph.h"
+#include <iomanip>
+#include <queue>
 using namespace std;
 
 Graph::Graph() {
@@ -40,78 +42,58 @@ void Graph::delNode(eletype vertex_val) {
 		srch1 = srch1->down;
 	}
 }
-void Graph::setSucc(eletype vertex1_val, eletype vertex2_val) {
+void Graph::setSucc(node from, node to) {
 	node srch1 = graph;
-	bool remain[] = {1, 1};
 	while (NULL != srch1->down) {
-		if (0 == remain[0] && 0 == remain[1]) return;
 		srch1 = srch1->down;
-		if (vertex1_val == srch1->data || vertex2_val == srch1->data) {
-			eletype from, to;
-			if (vertex1_val == srch1->data) {
-				from = vertex1_val;
-				to = vertex2_val;
-			}
-			else {
-				from = vertex2_val;
-				to = vertex1_val;
-			}
-			node srch2 = srch1;
-			while (srch2->right != NULL) srch2 = srch2->right;
-			srch2->right = newNode(to);
-			remain[from] = 0;
-		}
-	}
-	if (1 == remain[0]) {
-		srch1->down = newNode(vertex1_val);
-		srch1 = srch1->down;
-		srch1->right = newNode(vertex2_val);
-	}
-	if (1 == remain[1]) {
-		srch1->down = newNode(vertex2_val);
-		srch1 = srch1->down;
-		srch1->right = newNode(vertex1_val);
-	}
-}
-void Graph::delSucc(eletype vertex1_val, eletype vertex2_val) {
-	node srch1 = graph;
-	bool remain[] = { 1, 1 };
-	while (srch1->down != NULL) {
-		if (0 == remain[0] && 0 == remain[1]) return;
-		srch1 = srch1->down;
-		if (vertex1_val == srch1->data || vertex2_val == srch1->data) {
-			eletype from, to;
-			if (vertex1_val == srch1->data) {
-				remain[0] = 0;
-				from = vertex1_val;
-				to = vertex2_val;
-			}
-			else {
-				remain[1] = 0;
-				from = vertex2_val;
-				to = vertex1_val;
-			}
+		if (from->data == srch1->data) {
 			node srch2 = srch1;
 			while (NULL != srch2->right) {
-				if (to != srch2->right->data) srch2 = srch2->right;
+				srch2 = srch2->right;
+				if (to->data == srch2->data) return;
+			}
+			srch2->right = newNode(to->data);
+			return;
+		}
+	}
+	srch1->down = newNode(from->data);
+	srch1 = srch1->down;
+	srch1->right = newNode(to->data);
+}
+void Graph::delSucc(node from, node to) {
+	node srch1 = graph;
+	while (NULL != srch1->down) {
+		srch1 = srch1->down;
+		if (from->data == srch1->data) {
+			node srch2 = srch1;
+			while (NULL != srch2->right) {
+				if (to->data != srch2->right->data) srch2 = srch2->right;
 				else {
 					node todel = srch2->right;
 					srch2->right = todel->right;
 					delete todel;
-					break;
+					return;
 				}
 			}
 		}
 	}
-	if (1 == remain[0]) {
-		srch1->down = newNode(vertex1_val);
-		srch1 = srch1->down;
-		srch1->right = newNode(vertex2_val);
-	}
-	if (1 == remain[1]) {
-		srch1->down = newNode(vertex2_val);
-		srch1 = srch1->down;
-		srch1->right = newNode(vertex1_val);
+}
+void Graph::buildMatrix() {
+	//确定最大点下标
+	memset(matrix, 0, sizeof(matrix));
+	matrixLen = 0;
+	node srchDown = graph, srchRight;
+	while (NULL != srchDown->down) {
+		srchDown = srchDown->down;
+		srchRight = srchDown;
+		int maxRight = 0;
+		while (NULL != srchRight->right) {
+			srchRight = srchRight->right;
+			maxRight = srchRight->data;
+			if (maxRight > matrixLen) matrixLen = maxRight;
+			matrix[srchDown->data][srchRight->data] = 1;
+		}
+		if (srchDown->data > matrixLen) matrixLen = srchDown->data;
 	}
 }
 
@@ -119,15 +101,15 @@ vector<Graph::eletype> Graph::succ(eletype vertex_val) {
 	node srch1 = graph;
 	vector<eletype> result;
 	while (NULL != srch1->down) {
-		srch1 = srch1->down;
-		if (vertex_val == srch1->down->data) {
-			node srch2 = srch1;
+		if (vertex_val != srch1->down->data) srch1 = srch1->down;
+		else {
+			node srch2 = srch1->down;
 			while (NULL != srch2->right) {
 				srch2 = srch2->right;
 				result.push_back(srch2->data);
 			}
 			return result;
-		}
+		}		
 	}
 	return result;
 }
@@ -147,19 +129,114 @@ vector<Graph::eletype> Graph::pre(eletype vertex_val) {
 			}
 		}
 	}
+	return result;
 }
-bool Graph::isEdge(eletype vertex1_val, eletype vertex2_val) {
+bool Graph::isEdge(eletype from, eletype to) {
 	node srch1 = graph;
 	while (NULL != srch1->down) {
 		srch1 = srch1->down;
-		if (vertex1_val == srch1->data) {
+		if (from == srch1->data) {
 			node srch2 = srch1;
 			while (NULL != srch2->right) {
 				srch2 = srch2->right;
-				if (vertex2_val == srch2->data) return true;
+				if (to == srch2->data) return true;
 			}
 			return false;
 		}
 	}
 	return false;
+}
+
+void Graph::DFSTraverse() {
+	bool visited[100] = { 0 };
+	node srchDown = graph;
+	while (NULL != srchDown->down) {
+		srchDown = srchDown->down;
+		if (!visited[srchDown->data]) {
+			DFSSearch(srchDown, visited);
+			cout << endl;
+		}
+	}
+}
+void Graph::DFSSearch(node now, bool* visited) {
+	if (visited[now->data] || NULL == now) return;
+	else {
+		cout << now->data << " ";
+		visited[now->data] = true;
+		node srchDown = graph;
+		while (NULL != srchDown->down) {
+			srchDown = srchDown->down;
+			if (srchDown->data == now->data) {
+				node srchRight = srchDown;
+				while (NULL != srchRight->right) {
+					srchRight = srchRight->right;
+					if (!visited[srchRight->data]) DFSSearch(srchRight, visited);
+				}
+			}
+		}
+	}
+}
+void Graph::BFSTraverse() {
+	bool visited[100] = { 0 };
+	node srchDown = graph;
+	while (NULL != srchDown->down) {
+		srchDown = srchDown->down;
+		if (!visited[srchDown->data]) {
+			BFSSearch(srchDown, visited);
+			cout << endl;
+		}
+	}
+}
+void Graph::BFSSearch(node now, bool* visited) {
+	if (NULL != graph->down) {
+		queue<eletype> toVisit;
+		eletype firstVal = graph->down->data;
+		toVisit.push(firstVal);
+		visited[firstVal] = true;
+		while (!toVisit.empty()) {
+			firstVal = toVisit.front();
+			cout << firstVal << " ";
+			vector<eletype> succList = succ(firstVal);
+			for (int i = 0; i < succList.size(); i++) {
+				eletype succVal = succList.at(i);
+				if (!visited[succVal]) {
+					toVisit.push(succVal);
+					visited[succVal] = true;
+				}
+			}
+			toVisit.pop();
+		}
+	}
+}
+
+void Graph::printGraph() {
+	node srchDown = graph, srchRight;
+	int cnt = 0;
+	while (NULL != srchDown->down) {
+		srchDown = srchDown->down;
+		cnt++;
+	}
+	srchDown = graph;
+	for (int i = 1; i <= cnt; i++) {
+		srchDown = srchDown->down;
+		cout << std::left << setw(10) << srchDown->data;
+		srchRight = srchDown;
+		while (NULL != srchRight->right) {
+			srchRight = srchRight->right;
+			cout << std::left << setw(10) << srchRight->data;
+		}
+		cout << endl;
+	}
+}
+void Graph::printMatrix() {
+	//绘图
+	buildMatrix();
+	for (int i = 0; i <= matrixLen; i++) cout << std::left << setw(10) << i;
+	cout << endl;
+	for (int i = 1; i <= matrixLen; i++) {
+		for (int j = 0; j <= matrixLen; j++) {
+			cout << std::left << setw(10) << ((0 == j) ? i : matrix[i][j]);
+		}
+		cout << endl;
+	}
 }
